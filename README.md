@@ -18,39 +18,19 @@ const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY"
 "anthropic-version": "2023-06-01",
 ```
 
-### 2. Add icons
-Drop three PNG files into `/icons/`:
-- `icon16.png` (16×16)
-- `icon48.png` (48×48)  
-- `icon128.png` (128×128)
-
-A simple black "P" on white background works fine for the demo.
-
-### 3. Load the extension in Chrome
+### 2. Load the extension in Chrome
 1. Open Chrome → `chrome://extensions`
 2. Enable **Developer mode** (top right toggle)
 3. Click **Load unpacked**
 4. Select the `pattern-extension` folder
 5. The Pattern icon appears in your toolbar
 
-### 4. Make sure your Supabase profiles table has these fields
-The extension expects the profile row to have:
-- `email`
-- `archetype` (string — e.g. "The Minimalist")
-- `style_words` (array — e.g. ["delicate", "understated", "architectural"])
-- `color_palette` (array — e.g. ["ivory", "charcoal", "french blue"])
-- `brand_affinities` (array — e.g. ["Acne Studios", "Catbird", "Toteme"])
-
-Adjust field names in `src/supabase.js` if yours differ.
-
 ## How it works
 
 1. Enter your email → pulls your Pattern Taste ID from Supabase
 2. On any brand site, open the panel and describe what you're looking for
-3. Claude picks which collection pages to crawl based on your intent
-4. Extension crawls those pages and extracts products
-5. Local filter removes anything over budget or irrelevant
-6. Claude ranks the survivors against your taste profile with a reason per item
+3. Claude uses the brand product catalog to find relevant products
+4. You can respond and product will iterate accordingly
 7. Click any product → opens in main window, panel stays open
 
 ## File structure
